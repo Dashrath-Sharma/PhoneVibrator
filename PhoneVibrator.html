@@ -1,12 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="bg-teal-300 w-full h-full flex justify-center items-center gap-5"
+    >
+      <button
+        class="bg-black text-white p-4 px-8 rounded font-bold"
+        onclick="vibrate()"
+      >
+        Click Me
+      </button>
+      <div class="logError"></div>
+    </div>
+    <script>
+      let clicked = false;
+      const logError = document.getElementsByClassName("logError");
+      function vibrate() {
+        if ("vibrate" in navigator) {
+          navigator.vibrate(1000);
+        } else {
+          console.log("Vibration not supported.");
+        }
+        console.log("btn working!");
+      }
+    </script>
+  </body>
 </html>
