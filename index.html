@@ -72,10 +72,10 @@
   <body>
     <div class="w-full h-full flex justify-center items-center gap-5">
       <button class="vibrator p-4 px-8 rounded font-bold" onclick="vibrate()">
-        Click Me
+        Vibrate
       </button>
       <button class="vibrator p-4 px-8 rounded font-bold" onclick="vibratePattern()">
-        Click Me
+        Vibrate Pattern
       </button>
       <div class="logError"></div>
     </div>
@@ -88,7 +88,7 @@
       }
       
       function vibratePattern(){
-        navigator.vibrate([1000, 100, 1000, 100, 1000, 100, 1000]);
+        navigator.vibrate([2000, 100, 2000, 100, 2000, 100, 2000]);
         console.log("btn working!");
       }
     </script>
