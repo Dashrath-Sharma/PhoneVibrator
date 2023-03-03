@@ -74,17 +74,21 @@
       <button class="vibrator p-4 px-8 rounded font-bold" onclick="vibrate()">
         Click Me
       </button>
+      <button class="vibrator p-4 px-8 rounded font-bold" onclick="vibratePattern()">
+        Click Me
+      </button>
       <div class="logError"></div>
     </div>
     <script>
       let clicked = false;
       const logError = document.getElementsByClassName("logError");
       function vibrate() {
-        if ("vibrate" in navigator) {
           navigator.vibrate(2000);
-        } else {
-          console.log("Vibration not supported.");
-        }
+        console.log("btn working!");
+      }
+      
+      function vibratePattern(){
+        navigator.vibrate([300, 100, 300, 100, 300, 100, 300]);
         console.log("btn working!");
       }
     </script>
