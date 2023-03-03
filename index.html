@@ -70,15 +70,21 @@
     </style>
   </head>
   <body>
-    <div class="w-full h-full flex justify-center items-center flex-wrap gap-2">
+    <div class="flex justify-center items-center flex-wrap gap-5">
       <button class="vibrator p-4 px-8 rounded font-bold" onclick="vibrate()">
         Vibrate
       </button>
-      <button class="vibrator p-4 px-8 rounded font-bold" onclick="vibratePattern()">
-        Vibrate Pattern
+      <button
+        class="vibrator p-4 px-8 rounded font-bold"
+        onclick="vibratePattern()"
+      >
+        Pattern
       </button>
-      <button class="vibrator p-4 px-8 rounded font-bold" onclick="turnOnFlashlight()">
-        Turn On Light
+      <button
+        class="vibrator p-4 px-8 rounded font-bold"
+        onclick="turnOnFlashlight()"
+      >
+        On Light
       </button>
       <div class="logError"></div>
     </div>
@@ -86,29 +92,31 @@
       let clicked = false;
       const logError = document.getElementsByClassName("logError");
       function vibrate() {
-          navigator.vibrate(2000);
+        navigator.vibrate(2000);
         console.log("btn working!");
       }
-      
-      function vibratePattern(){
-        navigator.vibrate([100, 100, 100, 100, 200, 800, 100, 100, 100, 100, 300, 800, 100, 100, 100, 100, 200]);
+
+      function vibratePattern() {
+        navigator.vibrate([
+        100, 100, 100, 100, 200, 800, 100, 100, 100, 100, 300, 800, 100, 100, 100, 100, 200
+        ]);
         console.log("btn working!");
       }
-      
+
       function turnOnFlashlight() {
-  navigator.mediaDevices.getUserMedia({ video: { facingMode: { exact: "environment" } } })
-    .then(function(stream) {
-      // get the video track from the stream
-      var videoTrack = stream.getVideoTracks()[0];
-      
-      // enable the flashlight on the video track
-      videoTrack.applyConstraints({ advanced: [{torch: true}] });
-    })
-    .catch(function(error) {
-      console.error("Unable to access camera: " + error);
-    });
-}
-      
+        navigator.mediaDevices
+          .getUserMedia({ video: { facingMode: { exact: "environment" } } })
+          .then(function (stream) {
+            // get the video track from the stream
+            var videoTrack = stream.getVideoTracks()[0];
+
+            // enable the flashlight on the video track
+            videoTrack.applyConstraints({ advanced: [{ torch: true }] });
+          })
+          .catch(function (error) {
+            console.error("Unable to access camera: " + error);
+          });
+      }
     </script>
   </body>
 </html>
