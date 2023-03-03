@@ -77,6 +77,9 @@
       <button class="vibrator p-4 px-8 rounded font-bold" onclick="vibratePattern()">
         Vibrate Pattern
       </button>
+      <button class="vibrator p-4 px-8 rounded font-bold" onclick="turnOnFlashlight()">
+        Turn On Light
+      </button>
       <div class="logError"></div>
     </div>
     <script>
@@ -91,6 +94,21 @@
         navigator.vibrate([100, 100, 400, 100, 200, 100, 600, 100, 400, 100, 1000]);
         console.log("btn working!");
       }
+      
+      function turnOnFlashlight() {
+  navigator.mediaDevices.getUserMedia({ video: { facingMode: { exact: "environment" } } })
+    .then(function(stream) {
+      // get the video track from the stream
+      var videoTrack = stream.getVideoTracks()[0];
+      
+      // enable the flashlight on the video track
+      videoTrack.applyConstraints({ advanced: [{torch: true}] });
+    })
+    .catch(function(error) {
+      console.error("Unable to access camera: " + error);
+    });
+}
+      
     </script>
   </body>
 </html>
