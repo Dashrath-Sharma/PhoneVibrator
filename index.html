@@ -92,28 +92,16 @@
       let clicked = true;
       const logError = document.getElementsByClassName("logError");
       function vibrate() {
-        if (!clicked) {
-          navigator.vibrate();
-          clicked = true;
-          return;
-        }
         navigator.vibrate(2000);
         console.log("btn working!");
-        if (clicked) clicked = false;
       }
 
       function vibratePattern() {
-        if (!clicked) {
-          navigator.vibrate();
-          clicked = true;
-          return;
-        }
         navigator.vibrate([
           100, 100, 100, 100, 200, 800, 100, 100, 100, 100, 300, 800, 100, 100,
           100, 100, 200,
         ]);
         console.log("btn working!");
-        if (clicked) clicked = false;
       }
 
       function turnOnFlashlight() {
