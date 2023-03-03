@@ -89,18 +89,31 @@
       <div class="logError"></div>
     </div>
     <script>
-      let clicked = false;
+      let clicked = true;
       const logError = document.getElementsByClassName("logError");
       function vibrate() {
+        if (!clicked) {
+          navigator.vibrate();
+          clicked = true;
+          return;
+        }
         navigator.vibrate(2000);
         console.log("btn working!");
+        if (clicked) clicked = false;
       }
 
       function vibratePattern() {
+        if (!clicked) {
+          navigator.vibrate();
+          clicked = true;
+          return;
+        }
         navigator.vibrate([
-        100, 100, 100, 100, 200, 800, 100, 100, 100, 100, 300, 800, 100, 100, 100, 100, 200
+          100, 100, 100, 100, 200, 800, 100, 100, 100, 100, 300, 800, 100, 100,
+          100, 100, 200,
         ]);
         console.log("btn working!");
+        if (clicked) clicked = false;
       }
 
       function turnOnFlashlight() {
@@ -109,13 +122,17 @@
           .then(function (stream) {
             // get the video track from the stream
             var videoTrack = stream.getVideoTracks()[0];
-
             // enable the flashlight on the video track
-            videoTrack.applyConstraints({ advanced: [{ torch: true }] });
+            videoTrack.applyConstraints({
+              advanced: [{ torch: clicked ? true : false }],
+            });
           })
           .catch(function (error) {
             console.error("Unable to access camera: " + error);
           });
+
+        if (!clicked) clicked = true;
+        else clicked = false;
       }
     </script>
   </body>
