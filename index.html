@@ -80,17 +80,9 @@
       >
         Pattern
       </button>
-      <button
-        class="vibrator p-4 px-8 rounded font-bold"
-        onclick="turnOnFlashlight()"
-      >
-        On Light
-      </button>
-      <div class="logError"></div>
+<!--       <div class="logError"></div> -->
     </div>
     <script>
-      let clicked = true;
-      const logError = document.getElementsByClassName("logError");
       function vibrate() {
         navigator.vibrate(2000);
         console.log("btn working!");
@@ -102,25 +94,6 @@
           1000, 100, 1000,
         ]);
         console.log("btn working!");
-      }
-
-      function turnOnFlashlight() {
-        navigator.mediaDevices
-          .getUserMedia({ video: { facingMode: { exact: "environment" } } })
-          .then(function (stream) {
-            // get the video track from the stream
-            var videoTrack = stream.getVideoTracks()[0];
-            // enable the flashlight on the video track
-            videoTrack.applyConstraints({
-              advanced: [{ torch: clicked ? true : false }],
-            });
-          })
-          .catch(function (error) {
-            console.error("Unable to access camera: " + error);
-          });
-
-        if (!clicked) clicked = true;
-        else clicked = false;
       }
     </script>
   </body>
